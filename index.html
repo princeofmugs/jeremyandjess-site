@@ -81,6 +81,30 @@ section > p strong{color:var(--cream)}
 .cover{display:block;width:min(100%,26rem);max-width:100%;height:auto;aspect-ratio:1;margin-top:.8rem;border:6px solid var(--cream);box-shadow:0 18px 40px rgba(0,0,0,.55);transform:rotate(-1.5deg)}
 @media (prefers-reduced-motion:no-preference){.cover{transition:transform .25s ease}.cover:hover{transform:rotate(0) scale(1.02)}}
 .btn .svc{font-weight:400;opacity:.75;font-size:.88rem}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lockbox{background:var(--velvet-2);border:1px solid var(--line);border-radius:4px;padding:1.25rem 1.4rem}
+.unlock{display:flex;flex-direction:column;gap:.8rem}
+.unlock p{margin:0;color:var(--muted)}
+.unlock-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.unlock-row input{flex:1 1 12rem;min-width:0;font:400 1rem/1.2 var(--body);padding:.85rem 1rem;border-radius:3px;border:1px solid var(--brass-soft);background:var(--velvet);color:var(--cream)}
+.unlock-row input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.unlock-row .btn{border:0;cursor:pointer;flex:0 0 auto}
+.unlock-row .btn::after{content:""}
+.unlock-msg{min-height:1.2em;font-size:.92rem}
+.unlock-msg.bad{color:#f0a08a}
+.unlocked{display:flex;flex-direction:column;gap:1rem}
+.unlocked p{margin:0}
+.venue{display:flex;flex-direction:column;gap:.35rem}
+.venue-name{font-family:var(--display);font-weight:800;font-size:1.9rem;line-height:1;text-transform:uppercase;color:var(--brass)}
+.venue .aside{color:var(--muted);font-size:.92rem}
+.venue-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+.venue-links a{color:var(--cream);border:1px solid var(--brass-soft);border-radius:3px;padding:.5rem .85rem;text-decoration:none;font-weight:600;font-size:.92rem}
+.venue-links a:hover{border-color:var(--brass);background:var(--velvet)}
+.notes{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.4rem}
+.notes strong{color:var(--brass)}
+.cal{border-top:1px solid var(--line);padding-top:1rem}
+.cal-label{color:var(--muted);font-size:.92rem}
 .runsheet{list-style:none;margin:0;padding:0;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:1.3rem}
 .runsheet li{position:relative;padding-left:1.4rem;display:flex;flex-direction:column;gap:.15rem}
 .runsheet li::before{content:"";position:absolute;left:-5px;top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--brass)}
@@ -113,6 +137,23 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;border-top:1px soli
     <p>Covers your party food and entry into the prize pool. Cash bar for drinks.</p>
     <p class="warn">Complete the competition form beforehand. Entries close at 4pm on the day.</p>
   </div>
+
+  <section id="details">
+    <h2>Party <span>details</span></h2>
+    <div class="lockbox" id="lockbox">
+      <form id="unlock-form" class="unlock" autocomplete="off">
+        <p>Venue and party info are for guests only. Enter the password from your invite.</p>
+        <div class="unlock-row">
+          <label class="sr" for="pw">Password</label>
+          <input id="pw" name="pw" type="password" placeholder="Password" autocapitalize="off" spellcheck="false" required>
+          <button type="submit" class="btn">Unlock</button>
+        </div>
+        <p class="unlock-msg" id="unlock-msg" role="status" aria-live="polite"></p>
+      </form>
+      <div id="unlocked" class="unlocked" hidden></div>
+    </div>
+    <script type="application/json" id="locked">{"v":1,"iter":250000,"salt":"kQnYVMd6T/LUcT4wKNYXVQ==","iv":"Xeefhguh6Gx7aq7k","ct":"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"}</script>
+  </section>
 
   <section id="rsvp">
     <h2>RSVP</h2>
@@ -148,6 +189,42 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;border-top:1px soli
       <li><time>7:30pm<small>ish</small></time><p>After the awards wrap, we announce the cash prize winner, then Quizmaster JFRESH kicks off music trivia with <em>actual</em> prizes up for grabs.</p></li>
     </ol>
   </section>
+
+  <script>
+  (function(){
+    var KEY='aria-pw';
+    var form=document.getElementById('unlock-form'),input=document.getElementById('pw'),
+        msg=document.getElementById('unlock-msg'),out=document.getElementById('unlocked');
+    var data;
+    try{data=JSON.parse(document.getElementById('locked').textContent)}catch(e){return}
+    var b=function(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})};
+    async function open(pw){
+      var enc=new TextEncoder();
+      var base=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);
+      var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(data.salt),iterations:data.iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+      var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b(data.iv)},key,b(data.ct));
+      return new TextDecoder().decode(pt);
+    }
+    async function tryPw(pw,quiet){
+      try{
+        out.innerHTML=await open(pw);
+        out.hidden=false;form.hidden=true;
+        try{localStorage.setItem(KEY,pw)}catch(e){}
+        return true;
+      }catch(e){
+        if(!quiet){msg.textContent="That password didn't work. Check your invite and try again.";msg.className='unlock-msg bad'}
+        return false;
+      }
+    }
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      msg.textContent='Unlocking…';msg.className='unlock-msg';
+      tryPw(input.value.trim(),false);
+    });
+    var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+    if(saved){tryPw(saved,true).then(function(ok){if(!ok){try{localStorage.removeItem(KEY)}catch(e){}}})}
+  })();
+  </script>
 
   <footer>jeremyandjess.com · see you on the red carpet</footer>
 </div>
