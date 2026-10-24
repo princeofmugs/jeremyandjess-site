@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jeremy &amp; Jess ARIA Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Libre+Franklin:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: one narrow stage column; velvet ground, brass type, a run-sheet timeline at the end. Single dark look by choice (it's an awards night). */
+:root{
+  --velvet:#1f0f17;
+  --velvet-2:#2c1520;
+  --brass:#e2b65a;
+  --brass-soft:#b8914a;
+  --cream:#f5ece0;
+  --muted:#c9b7aa;
+  --line:rgba(226,182,90,.28);
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Libre Franklin","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0}
+body{
+  background:var(--velvet);
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(226,182,90,.22), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 2px, transparent 2px 46px);
+  color:var(--cream);
+  font:400 1.0625rem/1.65 var(--body);
+}
+.wrap{
+  max-width:40rem;margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:3rem 4rem;
+  display:flex;flex-direction:column;gap:3.5rem;
+}
+h1,h2{font-family:var(--display);text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance;letter-spacing:.01em}
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.eyebrow{font:600 .78rem/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.hero h1{font-size:clamp(2.8rem,11vw,4.6rem);overflow-wrap:anywhere;font-weight:900;color:var(--cream)}
+.hero h1 .gold{color:var(--brass);display:block}
+.when{
+  font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,5.5vw,2.1rem);
+  text-transform:uppercase;letter-spacing:.04em;
+  border-block:1px solid var(--line);padding-block:.55rem;width:100%;
+}
+.intro{display:flex;flex-direction:column;gap:1rem;max-width:36rem}
+.intro p{margin:0}
+.intro strong{color:var(--brass)}
+.ticket{
+  background:var(--velvet-2);border:1px solid var(--line);border-radius:4px;
+  padding:1.25rem 1.4rem;display:grid;grid-template-columns:auto 1fr;gap:.25rem 1.2rem;align-items:center;
+}
+.ticket .price{font-family:var(--display);font-weight:900;font-size:3.4rem;line-height:1;color:var(--brass);grid-row:span 2}
+.ticket p{margin:0}
+.ticket .warn{font-size:.92rem;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:.9rem}
+section h2{font-size:clamp(2.2rem,8vw,3rem);font-weight:800;color:var(--cream)}
+section h2 span{color:var(--brass)}
+section > p{margin:0;color:var(--muted)}
+section > p strong{color:var(--cream)}
+.btns{display:flex;flex-direction:column;gap:.6rem;margin-top:.2rem}
+.btn{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.95rem 1.2rem;border-radius:3px;text-decoration:none;
+  font:700 1rem/1.2 var(--body);letter-spacing:.02em;
+  background:var(--brass);color:var(--velvet);
+  transition:transform .15s ease, background .15s ease;
+}
+.btn::after{content:"→";font-size:1.15rem}
+.btn:hover{background:var(--cream);transform:translateX(3px)}
+.btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--brass-soft)}
+.btn.ghost:hover{background:var(--velvet-2);border-color:var(--brass)}
+.btn.soon{background:transparent;color:var(--muted);border:1px dashed var(--brass-soft);cursor:default}
+.btn.soon::after{content:""}
+.btn.soon:hover{transform:none;background:transparent}
+.cover{display:block;width:min(100%,26rem);max-width:100%;height:auto;aspect-ratio:1;margin-top:.8rem;border:6px solid var(--cream);box-shadow:0 18px 40px rgba(0,0,0,.55);transform:rotate(-1.5deg)}
+@media (prefers-reduced-motion:no-preference){.cover{transition:transform .25s ease}.cover:hover{transform:rotate(0) scale(1.02)}}
+.btn .svc{font-weight:400;opacity:.75;font-size:.88rem}
+.runsheet{list-style:none;margin:0;padding:0;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:1.3rem}
+.runsheet li{position:relative;padding-left:1.4rem;display:flex;flex-direction:column;gap:.15rem}
+.runsheet li::before{content:"";position:absolute;left:-5px;top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--brass)}
+.runsheet time{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:.03em;color:var(--brass);font-variant-numeric:tabular-nums;line-height:1.1}
+.runsheet time small{font-size:.9rem;color:var(--muted);font-weight:600;margin-left:.3rem}
+.runsheet p{margin:0}
+footer{text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Jeremy &amp; Jess present</span>
+    <h1>The 21st Annual <span class="gold">ARIA Party</span></h1>
+    <div class="when">4pm · Wednesday 18 November</div>
+    <img class="cover" src="cover-2026.jpg" width="894" height="894" alt="ARIA Party 2026 album cover: an INXS Kick parody with Jeremy's face on all four band members">
+  </header>
+
+  <div class="intro">
+    <p>OMG it's getting close to ARIA time!! Can you believe I've been hosting this nonsense for 21 years?? It's like the longevity of Daryl Somers on network television, but for parties celebrating underappreciated televised music award shows.</p>
+    <p>The awards start at 4pm, live streamed on Paramount Plus. The red carpet is on beforehand, but gosh, 4pm seems early enough doesn't it. There'll be food, trivia (with special prizes), and the venue is in Moorooka this year. Super exciting for our south side attendees!</p>
+  </div>
+
+  <div class="ticket">
+    <div class="price">$20</div>
+    <p>Covers your party food and entry into the prize pool. Cash bar for drinks.</p>
+    <p class="warn">Complete the competition form beforehand. Entries close at 4pm on the day.</p>
+  </div>
+
+  <section id="rsvp">
+    <h2>RSVP</h2>
+    <p>Let us know you're coming. <strong>Please RSVP by 11 November.</strong></p>
+    <div class="btns">
+      <span class="btn soon" aria-disabled="true">RSVP form opens soon</span>
+    </div>
+  </section>
+
+  <section id="listen">
+    <h2>Listen</h2>
+    <p>Listen to this year's nominees so you can guess the winners. Same playlist, pick your service.</p>
+    <div class="btns">
+      <a class="btn ghost" href="https://open.qobuz.com/playlist/71901039" target="_blank" rel="noopener"><span>Qobuz <span class="svc">· ARIA nominees playlist</span></span></a>
+      <a class="btn ghost" href="https://open.spotify.com/playlist/69V7qJvYkoMC0VR5afypuB" target="_blank" rel="noopener"><span>Spotify <span class="svc">· ARIA nominees playlist</span></span></a>
+      <a class="btn ghost" href="https://music.youtube.com/playlist?list=PLJz076nUNsiU" target="_blank" rel="noopener"><span>YouTube Music <span class="svc">· ARIA nominees playlist</span></span></a>
+    </div>
+  </section>
+
+  <section id="comp">
+    <h2>Enter the <span>comp</span></h2>
+    <p>Guess the most winners and take the prize pool. <strong>Enter before 4pm, 18 November.</strong></p>
+    <div class="btns">
+      <span class="btn soon" aria-disabled="true">Entry form opens soon</span>
+    </div>
+  </section>
+
+  <section id="times">
+    <h2>Running times</h2>
+    <ol class="runsheet">
+      <li><time>4:00pm</time><p>The ARIA Awards stream starts and we're at the venue.</p></li>
+      <li><time>5:30pm<small>ish</small></time><p>Party food starts coming out.</p></li>
+      <li><time>7:00pm<small>ish</small></time><p>After the awards wrap, we announce the cash prize winner, then Quizmaster JFRESH kicks off music trivia with <em>actual</em> prizes up for grabs.</p></li>
+    </ol>
+  </section>
+
+  <footer>jeremyandjess.com</footer>
+</div>
+</body>
+</html>
